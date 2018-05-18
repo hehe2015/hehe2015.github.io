@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Dagger2," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="在最高点乘着叶片往前飞">
+<meta name="description" content="Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。">
+<meta name="keywords" content="Dagger2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dagger2 - 进阶">
 <meta property="og:url" content="http://yoursite.com/2018/05/18/Dagger2 - 进阶/index.html">
 <meta property="og:site_name" content="Snail">
-<meta property="og:description" content="在最高点乘着叶片往前飞">
+<meta property="og:description" content="Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T08:22:32.991Z">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/Dagger2%20-%20进阶/provides.png">
+<meta property="og:updated_time" content="2018-05-18T09:29:31.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2 - 进阶">
-<meta name="twitter:description" content="在最高点乘着叶片往前飞">
+<meta name="twitter:description" content="Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/18/Dagger2%20-%20进阶/provides.png">
 
 
 
@@ -374,7 +377,9 @@
       
 
       
-        
+        <p>Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。<br>本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。<br><img src="/2018/05/18/Dagger2 - 进阶/provides.png" alt="modules"></p>
+<a id="more"></a>
+<h1 id="Qualifier（限定符）"><a href="#Qualifier（限定符）" class="headerlink" title="Qualifier（限定符）"></a>Qualifier（限定符）</h1>
       
     </div>
     
@@ -427,6 +432,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dagger2/" rel="tag"><i class="fa fa-tag"></i> Dagger2</a>
+          
+        </div>
       
 
       
@@ -520,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -587,6 +607,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Qualifier（限定符）"><span class="nav-number">1.</span> <span class="nav-text">Qualifier（限定符）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
