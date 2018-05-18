@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？">
+<meta name="description" content="在最高点乘着叶片往前飞">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dagger 2">
-<meta property="og:url" content="http://yoursite.com/2018/05/18/Dagger-2/index.html">
+<meta property="og:title" content="Dagger2 - 进阶">
+<meta property="og:url" content="http://yoursite.com/2018/05/18/Dagger2 - 进阶/index.html">
 <meta property="og:site_name" content="Snail">
-<meta property="og:description" content="Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？">
+<meta property="og:description" content="在最高点乘着叶片往前飞">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/05/18/Dagger-2/injector.png">
-<meta property="og:updated_time" content="2018-05-18T04:09:38.812Z">
+<meta property="og:updated_time" content="2018-05-18T08:22:32.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dagger 2">
-<meta name="twitter:description" content="Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/18/Dagger-2/injector.png">
+<meta name="twitter:title" content="Dagger2 - 进阶">
+<meta name="twitter:description" content="在最高点乘着叶片往前飞">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/18/Dagger-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/18/Dagger2 - 进阶/"/>
 
 
 
 
 
-  <title>Dagger 2 | Snail</title>
+  <title>Dagger2 - 进阶 | Snail</title>
   
 
 
@@ -298,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/Dagger-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/Dagger2 - 进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wil Lau">
@@ -315,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Dagger 2</h1>
+          <h1 class="post-title" itemprop="name headline">Dagger2 - 进阶</h1>
         
 
         <div class="post-meta">
@@ -327,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T11:13:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T16:22:32+08:00">
                 2018-05-18
               </time>
             
@@ -338,28 +336,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -369,8 +345,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/05/18/Dagger-2/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/05/18/Dagger-2/" itemprop="commentsCount"></span>
+                <a href="/2018/05/18/Dagger2 - 进阶/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/05/18/Dagger2 - 进阶/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -398,20 +374,7 @@
       
 
       
-        <p>Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。<br>Dagger2能带来哪些好处？<br>Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？<br>Dagger2如何使用？<br><a id="more"></a></p>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>依赖注入： 就是目标类（目标类需要进行依赖初始化的类）中所依赖的其他类的初始化过程，不是通过手动编码的方式创建，而是通过技术手段可以吧其他的类的已经初始化好了的实例自动注入到目标类中。</p>
-<h1 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h1><h2 id="Inject"><a href="#Inject" class="headerlink" title="Inject"></a>Inject</h2><p>先看一段代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">	B b = new B(...);</span><br><span class="line">	C c = new C();</span><br><span class="line">	D d = new D(new E());</span><br><span class="line">	F f = new F(.....);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码在做重复工作，new B() new C()…  </p>
-<p>我们可以用注解来标注目标类中所依赖的其他类，同样用注解来标注所依赖的其他类的构造函数，那注解的名字就叫Inject<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">	@Inject</span><br><span class="line">	B b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B&#123;</span><br><span class="line">	@Inject</span><br><span class="line">	public B()&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以让目标类中所依赖的其他类与其他类的构造函数有一种联系。Component就是他们联系的桥梁。</p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><p>Component也是一个注解类，一个类要想是Component，必须用Component注解来标注该类，并且该类是抽象类或接口。<br>Component是目标类所依赖的其他类和其他类的构造函数直接的桥梁，那么Component需要引用到目标类的实例，Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数（此时就发生了联系），剩下的工作就是初始化该属性的实例并把实例进行赋值。因此我们也可以给Component就另一个名字注入器（Injector）。<br><img src="/2018/05/18/Dagger-2/injector.png" alt="Injector"></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>目标类要想初始化自己所依赖的其他类：</p>
-<ul>
-<li>用Inject注解标注目标类的其他类</li>
-<li>用Inject注解标注其他类的构造函数（若其他类还依赖于别的类，重复1 2步骤）</li>
-<li>调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字，以inject开始）</li>
-</ul>
-
+        
       
     </div>
     
@@ -474,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/16/面向对象设计的五个基本原则/" rel="next" title="面向对象设计的五个基本原则">
-                <i class="fa fa-chevron-left"></i> 面向对象设计的五个基本原则
+              <a href="/2018/05/18/Dagger2 - 基础/" rel="next" title="Dagger2 - 基础">
+                <i class="fa fa-chevron-left"></i> Dagger2 - 基础
               </a>
             
           </div>
@@ -557,17 +520,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -586,7 +540,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,22 +587,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式开始"><span class="nav-number">2.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inject"><span class="nav-number">2.1.</span> <span class="nav-text">Inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">2.2.</span> <span class="nav-text">Component</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

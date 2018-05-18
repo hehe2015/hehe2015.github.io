@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Dagger 2]]></title>
-    <url>%2F2018%2F05%2F18%2FDagger-2%2F</url>
-    <content type="text"><![CDATA[Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？ 准备依赖注入： 就是目标类（目标类需要进行依赖初始化的类）中所依赖的其他类的初始化过程，不是通过手动编码的方式创建，而是通过技术手段可以吧其他的类的已经初始化好了的实例自动注入到目标类中。 正式开始Inject先看一段代码123456class A&#123; B b = new B(...); C c = new C(); D d = new D(new E()); F f = new F(.....);&#125; 上面代码在做重复工作，new B() new C()… 我们可以用注解来标注目标类中所依赖的其他类，同样用注解来标注所依赖的其他类的构造函数，那注解的名字就叫Inject12345678910class A&#123; @Inject B b;&#125;class B&#123; @Inject public B()&#123; &#125;&#125; 这样我们就可以让目标类中所依赖的其他类与其他类的构造函数有一种联系。Component就是他们联系的桥梁。 ComponentComponent也是一个注解类，一个类要想是Component，必须用Component注解来标注该类，并且该类是抽象类或接口。Component是目标类所依赖的其他类和其他类的构造函数直接的桥梁，那么Component需要引用到目标类的实例，Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数（此时就发生了联系），剩下的工作就是初始化该属性的实例并把实例进行赋值。因此我们也可以给Component就另一个名字注入器（Injector）。 小结目标类要想初始化自己所依赖的其他类： 用Inject注解标注目标类的其他类 用Inject注解标注其他类的构造函数（若其他类还依赖于别的类，重复1 2步骤） 调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字，以inject开始）]]></content>
+    <title><![CDATA[Dagger2 - 进阶]]></title>
+    <url>%2F2018%2F05%2F18%2FDagger2%20-%20%E8%BF%9B%E9%98%B6%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Dagger2 - 基础]]></title>
+    <url>%2F2018%2F05%2F18%2FDagger2%20-%20%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？ 准备依赖注入： 就是目标类（目标类需要进行依赖初始化的类）中所依赖的其他类的初始化过程，不是通过手动编码的方式创建，而是通过技术手段可以吧其他的类的已经初始化好了的实例自动注入到目标类中。 正式开始Inject先看一段代码123456class A&#123; B b = new B(...); C c = new C(); D d = new D(new E()); F f = new F(.....);&#125; 上面代码在做重复工作，new B() new C()… 我们可以用注解来标注目标类中所依赖的其他类，同样用注解来标注所依赖的其他类的构造函数，那注解的名字就叫Inject12345678910class A&#123; @Inject B b;&#125;class B&#123; @Inject public B()&#123; &#125;&#125; 这样我们就可以让目标类中所依赖的其他类与其他类的构造函数有一种联系。Component就是他们联系的桥梁。 ComponentComponent也是一个注解类，一个类要想是Component，必须用Component注解来标注该类，并且该类是抽象类或接口。Component是目标类所依赖的其他类和其他类的构造函数直接的桥梁，那么Component需要引用到目标类的实例，Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数（此时就发生了联系），剩下的工作就是初始化该属性的实例并把实例进行赋值。因此我们也可以给Component就另一个名字注入器（Injector）。 小结目标类要想初始化自己所依赖的其他类： 用Inject注解标注目标类的其他类 用Inject注解标注其他类的构造函数（若其他类还依赖于别的类，重复1 2步骤） 调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字，以inject开始） Component现在是一个注入器，Component会把目标类依赖的实例注入到目标类中，并初始化目标类的依赖。 为啥又有个Module如果项目中用到第三方的类库，就不能修改第三方类库，所以不可能把Inject注解加入到这些类中，此时Inject就失效了。 那我们怎么封装第三方类库呢，于是Module就派上用场了。可以把封装第三方类库的代码放到Module中：1234567@Modulepublic class ModuleClass&#123; //A是第三方类库中的一个类 A provideA()&#123; return A(); &#125;&#125; Module其实是一个简单工厂模式，Module里面的方法基本都是创建类实例的方法。问题：Component注入器，如何让Component与Module产生联系？ Component新职责Component是注入器，它一端连接目标类，另一端连接目标类的依赖实例，它把目标类实例注入到目标类中。上文中的Module是一个提供类实例的类，所有它是属于Component的实例端的，Component的新职责是管理Module，Component中的modules属性可以把Module加入到Component中，modules可以加入多个Module。 Provides 最终解决第三方类库依赖注入问题Module中创建类实例方法用Provides进行标注，Component在搜索到目标类中用Inject注解标注的属性后，Component就会去Module中查找用Provides标注的对应的创建类实例方法，这样就解决了第三方类库用Dagger2实现依赖注入了。 总结Inject，Component，Module，Provides是Dagger2中最基础最核心的内容。奠定了Dagger2的整个依赖注入框架。 Inject用于标注目标类的依赖，和依赖的构造函数 Component是个桥梁，连接目标类和目标类的依赖的实例，它也是注入器负责把目标类的依赖的实例注入到目标类中，同时管理Module。 Module和Provides是为了解决第三方类库而生的，Module是一个简单工厂模式，Module可以包含创建类实例的方法，这些方法用Provides来标注]]></content>
       <categories>
         <category>android</category>
       </categories>
