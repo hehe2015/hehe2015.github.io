@@ -399,7 +399,7 @@
 
       
         
-          <p>Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。<br>Dagger2能带来哪些好处？<br>Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？<br>Dagger2如何使用？<br></p>
+          <p>Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。<br>Dagger2能带来哪些好处？<br>Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？<br>Dagger2如何使用？<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/18/Dagger-2/#more" rel="contents">
@@ -561,7 +561,7 @@
       
         
           <p>面向对象设计的3个基本要素：封装、继承、多态  </p>
-<p>面向对象设计的5个基本原则：单一职责原则、开放封闭、里氏置换、依赖倒置、接口隔离<br></p>
+<p>面向对象设计的5个基本原则：单一职责原则、开放封闭、里氏置换、依赖倒置、接口隔离<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/16/面向对象设计的五个基本原则/#more" rel="contents">
@@ -2410,5 +2410,34 @@ RxJava:RxJava 在 GitHub 主页上的自我介绍是 “a library for composing 
   
 
   
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
 </body>
 </html>

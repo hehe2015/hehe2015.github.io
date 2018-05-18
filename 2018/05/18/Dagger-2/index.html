@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="Snail">
 <meta property="og:description" content="Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/05/18/Dagger-2/injector.png">
-<meta property="og:updated_time" content="2018-05-18T03:55:37.803Z">
+<meta property="og:image" content="http://yoursite.com/2018/05/18/injector.png">
+<meta property="og:updated_time" content="2018-05-18T04:09:38.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger 2">
 <meta name="twitter:description" content="Dagger2,它是解决android或java中依赖注入的一个类库（DI类库）。Dagger2能带来哪些好处？Dagger2中的Inject，Component，Module，Provides等等是什么，有什么作用？Dagger2如何使用？">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/18/Dagger-2/injector.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/18/injector.png">
 
 
 
@@ -404,7 +404,13 @@
 <p>上面代码在做重复工作，new B() new C()…  </p>
 <p>我们可以用注解来标注目标类中所依赖的其他类，同样用注解来标注所依赖的其他类的构造函数，那注解的名字就叫Inject<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">	@Inject</span><br><span class="line">	B b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B&#123;</span><br><span class="line">	@Inject</span><br><span class="line">	public B()&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样我们就可以让目标类中所依赖的其他类与其他类的构造函数有一种联系。Component就是他们联系的桥梁。</p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><p>Component也是一个注解类，一个类要想是Component，必须用Component注解来标注该类，并且该类是抽象类或接口。<br>Component是目标类所依赖的其他类和其他类的构造函数直接的桥梁，那么Component需要引用到目标类的实例，Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数（此时就发生了联系），剩下的工作就是初始化该属性的实例并把实例进行赋值。因此我们也可以给Component就另一个名字注入器（Injector）。<br><img src="/2018/05/18/Dagger-2/injector.png" alt="Injector"></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><p>Component也是一个注解类，一个类要想是Component，必须用Component注解来标注该类，并且该类是抽象类或接口。<br>Component是目标类所依赖的其他类和其他类的构造函数直接的桥梁，那么Component需要引用到目标类的实例，Component会查找目标类中用Inject注解标注的属性，查找到相应的属性后会接着查找该属性对应的用Inject标注的构造函数（此时就发生了联系），剩下的工作就是初始化该属性的实例并把实例进行赋值。因此我们也可以给Component就另一个名字注入器（Injector）。<br><img src="../injector.png" alt="Injector"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>目标类要想初始化自己所依赖的其他类：</p>
+<ul>
+<li>用Inject注解标注目标类的其他类</li>
+<li>用Inject注解标注其他类的构造函数（若其他类还依赖于别的类，重复1 2步骤）</li>
+<li>调用Component（注入器）的injectXXX（Object）方法开始注入（injectXXX方法名字是官方推荐的名字，以inject开始）</li>
+</ul>
 
       
     </div>
@@ -637,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式开始"><span class="nav-number">2.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inject"><span class="nav-number">2.1.</span> <span class="nav-text">Inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">2.2.</span> <span class="nav-text">Component</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式开始"><span class="nav-number">2.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inject"><span class="nav-number">2.1.</span> <span class="nav-text">Inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">2.2.</span> <span class="nav-text">Component</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1170,5 +1176,34 @@
   
 
   
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
 </body>
 </html>

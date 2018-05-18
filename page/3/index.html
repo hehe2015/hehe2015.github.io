@@ -991,7 +991,7 @@ ConstraintLayout,翻译过来,可以叫约束布局,其子view就是通过一个
 
       
         
-          <p><img src="/2017/10/30/hexo-引用图片/test.jpg" alt="描述信息"><br></p>
+          <p><img src="hexo-引用图片/test.jpg" alt="描述信息"><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/30/hexo-引用图片/#more" rel="contents">
@@ -1131,7 +1131,7 @@ ConstraintLayout,翻译过来,可以叫约束布局,其子view就是通过一个
       
         
           <p>当博客达到一定数量的时候，为了方便找到想找的内容，就需要用到搜索了。  </p>
-<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="/2017/10/30/hexo-next添加algolia搜索/demo.png" alt="效果图"><br></p>
+<h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p><img src="hexo-next添加algolia搜索/demo.png" alt="效果图"><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/30/hexo-next添加algolia搜索/#more" rel="contents">
@@ -1932,5 +1932,34 @@ hexonpm install hexo -g #安装npm update hexo -g #升级npm init #初始化
   
 
   
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
 </body>
 </html>
