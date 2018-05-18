@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="Snail">
 <meta property="og:description" content="引用 SmartRefreshLayout 前言正如名字所说，SmartRefreshLayout是一个“聪明”或者“智能”的下拉刷新布局，由于它的“智能”，它不只是支持所有的View，还支持多层嵌套的视图结构。它继承自ViewGroup 而不是FrameLayout或LinearLayout，提高了性能。 也吸取了现在流行的各种刷新布局的优点，包括谷歌官方的 SwipeRefreshLayout">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/04/12/SmartRefreshLayout-刷新加载数据（listview，recycleview，webivew-）/SmartRefreshLayout%20刷新加载数据（listview，recycleview，webivew.../1.gif">
+<meta property="og:image" content="http://yoursite.com/2018/04/12/SmartRefreshLayout-刷新加载数据（listview，recycleview，webivew-）/1.gif">
 <meta property="og:updated_time" content="2018-05-17T07:25:57.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SmartRefreshLayout 刷新加载数据（listview，recycleview，webivew...）">
 <meta name="twitter:description" content="引用 SmartRefreshLayout 前言正如名字所说，SmartRefreshLayout是一个“聪明”或者“智能”的下拉刷新布局，由于它的“智能”，它不只是支持所有的View，还支持多层嵌套的视图结构。它继承自ViewGroup 而不是FrameLayout或LinearLayout，提高了性能。 也吸取了现在流行的各种刷新布局的优点，包括谷歌官方的 SwipeRefreshLayout">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/12/SmartRefreshLayout-刷新加载数据（listview，recycleview，webivew-）/SmartRefreshLayout%20刷新加载数据（listview，recycleview，webivew.../1.gif">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/12/SmartRefreshLayout-刷新加载数据（listview，recycleview，webivew-）/1.gif">
 
 
 
@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -146,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -396,7 +396,7 @@
 <h2 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);</span><br><span class="line">refreshLayout.setOnRefreshListener(new OnRefreshListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onRefresh(RefreshLayout refreshlayout) &#123;</span><br><span class="line">        new Handler() &#123;</span><br><span class="line">                &#125;.postDelayed(new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        refreshLayout.finishRefresh();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 2000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onLoadMore(RefreshLayout refreshlayout) &#123;</span><br><span class="line">        new Handler() &#123;</span><br><span class="line">                &#125;.postDelayed(new Runnable() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void run() &#123;</span><br><span class="line">                        refreshLayout.finishLoadMore();</span><br><span class="line">                        //adapter.update(getList());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 2000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="属性设置"><a href="#属性设置" class="headerlink" title="属性设置"></a>属性设置</h2><p><a href="https://github.com/scwang90/SmartRefreshLayout/blob/master/art/md_property.md" title="属性" target="_blank" rel="noopener">属性设置</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">refreshLayout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//颜色设置</span><br><span class="line">refreshLayout.setDragRate(0.5f);//阻尼效果</span><br><span class="line">refreshLayout.setHeaderHeight(60);//Header高度dp</span><br><span class="line">refreshLayout.setFooterHeight(40);//Footer高度dp</span><br></pre></td></tr></table></figure></p>
 <h2 id="Header-Footer-设置"><a href="#Header-Footer-设置" class="headerlink" title="Header Footer 设置"></a>Header Footer 设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//设置指定的 Header 和 Footer</span><br><span class="line">//设置 Header 为 贝塞尔雷达 样式</span><br><span class="line">refreshLayout.setRefreshHeader(new ClassicsHeader(this).setTimeFormat(new SimpleDateFormat(&quot;上次更新 HH:mm:ss&quot;)));</span><br><span class="line">//设置 Footer 为 球脉冲 样式</span><br><span class="line">refreshLayout.setRefreshFooter(new BallPulseFooter(this));</span><br></pre></td></tr></table></figure>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="SmartRefreshLayout 刷新加载数据（listview，recycleview，webivew.../1.gif" alt=""></p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="/2018/04/12/SmartRefreshLayout-刷新加载数据（listview，recycleview，webivew-）/1.gif" alt=""></p>
 
       
     </div>
@@ -1187,11 +1187,12 @@
 const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
 (function(){
   if((typeof(device) != 'undefined') && (device.mobile())){
-    document.getElementById("live2dcanvas").style.width = '75px';
-    document.getElementById("live2dcanvas").style.height = '150px';
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
   }else
     if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
 })();
 </script>
 

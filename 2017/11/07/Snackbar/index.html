@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Snail">
 <meta property="og:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。 导包使用Snackbar要导入com.android.support:design库。1compile &amp;apos;com.android.support:design:26.1.0&amp;apos; 一般使用Snackbar基本使用和Toast类似12345">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/11/07/Snackbar/Snackbar/snackbar1.gif">
-<meta property="og:image" content="http://yoursite.com/2017/11/07/Snackbar/Snackbar/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/07/Snackbar/snackbar1.gif">
+<meta property="og:image" content="http://yoursite.com/2017/11/07/Snackbar/1.png">
 <meta property="og:updated_time" content="2018-05-17T07:25:57.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Snackbar">
 <meta name="twitter:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。 导包使用Snackbar要导入com.android.support:design库。1compile &amp;apos;com.android.support:design:26.1.0&amp;apos; 一般使用Snackbar基本使用和Toast类似12345">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/07/Snackbar/Snackbar/snackbar1.gif">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/07/Snackbar/snackbar1.gif">
 
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -148,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -381,7 +381,7 @@
         <p>Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。</p>
 <h1 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h1><p>使用Snackbar要导入com.android.support:design库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;com.android.support:design:26.1.0&apos;</span><br></pre></td></tr></table></figure></p>
 <h1 id="一般使用"><a href="#一般使用" class="headerlink" title="一般使用"></a>一般使用</h1><p>Snackbar基本使用和Toast类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Snackbar.make(view,&quot;hello world&quot;,Snackbar.LENGTH_INDEFINITE)</span><br><span class="line">        .setAction(&quot;你好&quot;, new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">				//点击后关闭Snackbar</span><br><span class="line">				Toast.makeText(SnackbarActivity.this,&quot;Snackbar被点击了&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .show();</span><br></pre></td></tr></table></figure></p>
-<p>属性解析:<br>make()生成Snackbar.<br>第一个参数是容纳view,推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互,比如向右右滑动Snackbar可取消,Snackbar出现时FloatingActionButton上移.<br>第二个参数是提示内容.<br>第三个参数是显示时间:LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。<br>setAction()设置右侧按钮,可增加点击事件.如果不写setAction()则只显示左侧提示内容.<br>下图演示右滑Snackbar取消和点击Action弹出Toast提示<br><img src="Snackbar/snackbar1.gif" alt=""></p>
+<p>属性解析:<br>make()生成Snackbar.<br>第一个参数是容纳view,推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互,比如向右右滑动Snackbar可取消,Snackbar出现时FloatingActionButton上移.<br>第二个参数是提示内容.<br>第三个参数是显示时间:LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。<br>setAction()设置右侧按钮,可增加点击事件.如果不写setAction()则只显示左侧提示内容.<br>下图演示右滑Snackbar取消和点击Action弹出Toast提示<br><img src="/2017/11/07/Snackbar/snackbar1.gif" alt=""></p>
 <h1 id="颜色修改"><a href="#颜色修改" class="headerlink" title="颜色修改"></a>颜色修改</h1><ol>
 <li>Action 文字颜色修改<br>.setActionTextColor(color)即可</li>
 <li>修改Snackbar背景颜色<br>api中并不能直接修改背景颜色,通过查看源码Snackbar加载了R.layout.design_layout_snackbar_include布局文件  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;merge xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">&lt;TextView</span><br><span class="line">        android:id=&quot;@+id/snackbar_text&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_weight=&quot;1&quot;</span><br><span class="line">        android:paddingTop=&quot;14dp&quot;</span><br><span class="line">        android:paddingBottom=&quot;14dp&quot;</span><br><span class="line">        android:paddingLeft=&quot;12dp&quot;</span><br><span class="line">        android:paddingRight=&quot;12dp&quot;</span><br><span class="line">        android:textAppearance=&quot;@style/TextAppearance.Design.Snackbar.Message&quot;</span><br><span class="line">        android:maxLines=&quot;2&quot;</span><br><span class="line">        android:layout_gravity=&quot;center_vertical|left|start&quot;</span><br><span class="line">        android:ellipsize=&quot;end&quot;</span><br><span class="line">        android:textAlignment=&quot;viewStart&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;Button</span><br><span class="line">        android:id=&quot;@+id/snackbar_action&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_marginLeft=&quot;0dp&quot;</span><br><span class="line">        android:layout_marginStart=&quot;0dp&quot;</span><br><span class="line">        android:layout_gravity=&quot;center_vertical|right|end&quot;</span><br><span class="line">        android:paddingTop=&quot;14dp&quot;</span><br><span class="line">        android:paddingBottom=&quot;14dp&quot;</span><br><span class="line">        android:paddingLeft=&quot;12dp&quot;</span><br><span class="line">        android:paddingRight=&quot;12dp&quot;</span><br><span class="line">        android:visibility=&quot;gone&quot;</span><br><span class="line">        android:textColor=&quot;?attr/colorAccent&quot;</span><br><span class="line">        style=&quot;?attr/borderlessButtonStyle&quot;/&gt;</span><br><span class="line">&lt;/merge&gt;</span><br></pre></td></tr></table></figure>
@@ -389,7 +389,7 @@
 </ol>
 <p>TextView:Snackbar左侧的message,Button是右侧的Action<br>修改Snackbar背景颜色和message字体颜色就是这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void setSnackbarColor(Snackbar snackbar, int messageColor, int backgroundColor) &#123;</span><br><span class="line">    View view = snackbar.getView();//获取Snackbar的view</span><br><span class="line">    if(view!=null)&#123;</span><br><span class="line">        view.setBackgroundColor(backgroundColor);//修改view的背景色</span><br><span class="line">        ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);//获取Snackbar的message控件，修改字体颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>简单修改代码就能改变背景颜色,message字体颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">final Snackbar make = Snackbar.make(coordinatorLayout, &quot;hello world&quot;, Snackbar.LENGTH_INDEFINITE);</span><br><span class="line">setSnackbarColor(make,getResources().getColor(R.color.black),getResources().getColor(R.color.colorAccent));</span><br><span class="line">make.setActionTextColor(getResources().getColor(R.color.blue));</span><br><span class="line">tv.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        make.setAction(&quot;你好&quot;, new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                Toast.makeText(SnackbarActivity.this,&quot;Snackbar Action被点击了&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">             &#125;</span><br><span class="line">     	&#125;)</span><br><span class="line">     	.show();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>效果图:<br><img src="Snackbar/1.png" alt=""><br>背景变成了红色,Message字体颜色为黑色,Action字体颜色蓝色</p>
+<p>效果图:<br><img src="/2017/11/07/Snackbar/1.png" alt=""><br>背景变成了红色,Message字体颜色为黑色,Action字体颜色蓝色</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Snackbar使用和Toast很是相似,出现在所有屏幕其他元素之上,make()生成Snackbar,show()显示.<br>可以设置action设置右侧按钮,增加交互<br>Snackbar样式修改,可直接通过setActionTextColor()修改action按钮颜色,要想修改背景和message颜色,就需要snackbar.getView()修改背景颜色,findviewbyid修改snackbar_text颜色<br>最后推荐Snackbar和CoordinatioLayout配合使用,以达到和其他组件(比如FloatingActionButton)交互效果,后面会讲到CoorinationLayout  </p>
 <p>参考:<a href="http://www.jianshu.com/p/cd1e80e64311/" target="_blank" rel="noopener">http://www.jianshu.com/p/cd1e80e64311/</a></p>
 
@@ -1188,11 +1188,12 @@
 const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
 (function(){
   if((typeof(device) != 'undefined') && (device.mobile())){
-    document.getElementById("live2dcanvas").style.width = '75px';
-    document.getElementById("live2dcanvas").style.height = '150px';
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
   }else
     if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
 })();
 </script>
 

@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="Snail">
 <meta property="og:description" content="RxJava使用介绍一个在Java VM上使用可观测的序列来组成异步的,基于事件的程序的库.简单说它就是一个实现异步操作的库. 观察者模式 观察者: 监视被观察者的行为,当被观察组某个状态改变的时候会通知观察者,观察组执行对应的操作; 被观察者: 被监视的对象 订阅(或注册): 将观察者和被观察者建立联系  例子: 按钮点击事件(OnClickListener中的onClick()事件)  观察者">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/11/29/RxJava-Retrofit-完成网络请求/RxJava%20+%20Retrofit%20完成网络请求/t1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/29/RxJava-Retrofit-完成网络请求/t1.png">
 <meta property="og:updated_time" content="2018-05-17T07:25:57.372Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava + Retrofit 完成网络请求">
 <meta name="twitter:description" content="RxJava使用介绍一个在Java VM上使用可观测的序列来组成异步的,基于事件的程序的库.简单说它就是一个实现异步操作的库. 观察者模式 观察者: 监视被观察者的行为,当被观察组某个状态改变的时候会通知观察者,观察组执行对应的操作; 被观察者: 被监视的对象 订阅(或注册): 将观察者和被观察者建立联系  例子: 按钮点击事件(OnClickListener中的onClick()事件)  观察者">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/29/RxJava-Retrofit-完成网络请求/RxJava%20+%20Retrofit%20完成网络请求/t1.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/29/RxJava-Retrofit-完成网络请求/t1.png">
 
 
 
@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -146,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -428,7 +428,7 @@
 <p>多次切换线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Observable.just(&quot;hello&quot;,&quot;hi&quot;)</span><br><span class="line">	.subscribeOn(Schedulers.newThread())</span><br><span class="line">	.observeOn(Schedulers.io())</span><br><span class="line">	.filter(new Func1&lt;String, Boolean&gt;() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public Boolean call(String s) &#123;</span><br><span class="line">			Log.d(TAG,&quot;filter thread: &quot;+Thread.currentThread().getId());</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">	.subscribe(new Action1&lt;String&gt;() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void call(String s) &#123;</span><br><span class="line">			Log.d(TAG,&quot;Thread: &quot;+Thread.currentThread().getId()+&quot;  &quot;+s);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>可以看出subserveOn()被调用两次,分别指定fliter处理和subscribe消费的线程<br>如果去掉后面的.observeOn(AndroidSchedulers.mainThread()),那么 .subscribe将会在io线程中执行<br>observeOn()可以多次使用，可以随意变换线程</p>
 <h1 id="Retrofit-使用"><a href="#Retrofit-使用" class="headerlink" title="Retrofit 使用"></a>Retrofit 使用</h1><p>Retrofit是Square公司开发的一个类型安全的Java和Android的REST客户端库(A type-safe HTTP client for Android and Java)<br>RestAPI是一种软件设计风格,服务器作为资源存放地.客户端去请求GET POST PUT DELETE…资源.并且是无状态的,没有session的参与.  </p>
-<p>Retrofit模型如下:<br><img src="RxJava + Retrofit 完成网络请求/t1.png" alt=""></p>
+<p>Retrofit模型如下:<br><img src="/2017/11/29/RxJava-Retrofit-完成网络请求/t1.png" alt=""></p>
 <p>1.POJO或模型实体类: 从服务器获取的JSON数据将被填充到这种类的实例中<br>2.接口: 我们需要创建一个接口来管理像GET POST…请求的URL,这是一个服务类.<br>3.RestAdapter类: 这是一个REST客户端(RestClient)类,retrofit中默认用的是Gson来解析JSON数据,你也可以设置自己的JSON解析器.</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在发起请求时,主要通过Call来封装每一次的请求;<br>调用同步方法时,会使用应用线程来发送请求;<br>调用异步方法时,会通过 OkHttp 的 <strong>Dispatcher</strong> 提供的线程来执行请求.  </p>
 <p><em>Dispatcher: r内部实现了懒加载无边界限制的线程池方式，同时该线程池采用了SynchronousQueue这种阻塞队列。SynchronousQueue每个插入操作必须等待另一个线程的移除操作，同样任何一个移除操作都等待另一个线程的插入操作。显然这是一种快速传递元素的方式，也就是说在这种情况下元素总是以最快的方式从插入者（生产者）传递给移除者（消费者），这在多任务队列中是最快处理任务的方式。</em></p>
@@ -1239,11 +1239,12 @@
 const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
 (function(){
   if((typeof(device) != 'undefined') && (device.mobile())){
-    document.getElementById("live2dcanvas").style.width = '75px';
-    document.getElementById("live2dcanvas").style.height = '150px';
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
   }else
     if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
 })();
 </script>
 

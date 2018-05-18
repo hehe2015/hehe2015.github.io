@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Snail">
 <meta property="og:description" content="简介CollapsingToolbarLayoutCollapsingToolbarLayout作用是提供一个可以折叠的Toolbar,给它设置layout_scrollFlags,就可以控制其内的控件(如:ImageView,Toolbar)在响应layout_behavior事件时做出相应的scrollFlags滚动事件. xml布局文件1234567891011121314151617181">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/CollapsingToolbarLayout/ctl1.gif">
-<meta property="og:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/CollapsingToolbarLayout/ctl2.gif">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/ctl1.gif">
+<meta property="og:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/ctl2.gif">
 <meta property="og:updated_time" content="2018-05-17T07:25:57.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CollapsingToolbarLayout">
 <meta name="twitter:description" content="简介CollapsingToolbarLayoutCollapsingToolbarLayout作用是提供一个可以折叠的Toolbar,给它设置layout_scrollFlags,就可以控制其内的控件(如:ImageView,Toolbar)在响应layout_behavior事件时做出相应的scrollFlags滚动事件. xml布局文件1234567891011121314151617181">
-<meta name="twitter:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/CollapsingToolbarLayout/ctl1.gif">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/08/CollapsingToolbarLayout/ctl1.gif">
 
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -148,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -386,10 +386,10 @@
 <li>ImageView中:<br> layout_collapseMode(折叠模式):<br> pin: 当CollapsingToolbarLayout完全收缩后,Toolbar还可以保留在屏幕上.<br> parallax: 在内容滚动时，CollapsingToolbarLayout中的View（比如ImageView)也可以同时滚动，实现视差滚动效果，通常和layout_collapseParallaxMultiplier(设置视差因子)搭配使用<br> layout_collapseParallaxMultiplier: 设置视差滚动因子，值为：0~1</li>
 <li>Toolbar中:<br> layout_collapseMode(折叠模式)：为pin(Toolbar保留在屏幕上)</li>
 </ol>
-<p>上例分析: 当向上滚动时,ImageView会有视觉差的向上滚出屏幕,最后Toolbar会固定在最顶端<br>效果图:<br><img src="CollapsingToolbarLayout/ctl1.gif" alt=""></p>
+<p>上例分析: 当向上滚动时,ImageView会有视觉差的向上滚出屏幕,最后Toolbar会固定在最顶端<br>效果图:<br><img src="/2017/11/08/CollapsingToolbarLayout/ctl1.gif" alt=""></p>
 <h1 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h1><p>修改Toolbar title颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctl.setExpandedTitleColor(getResources().getColor(R.color.white));</span><br><span class="line">ctl.setCollapsedTitleTextColor(getResources().getColor(R.color.white));</span><br></pre></td></tr></table></figure></p>
 <p>修改折叠后Toolbar背景颜色 (app:contentScrim)<br>上例xml文件中已经将Toolbar背景颜色修改过,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">	android:id=&quot;@+id/ctl&quot;</span><br><span class="line">	android:layout_width=&quot;match_parent&quot;</span><br><span class="line">	android:layout_height=&quot;300dp&quot;</span><br><span class="line">	app:contentScrim=&quot;@color/colorPrimary&quot;</span><br><span class="line">	app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</span><br><span class="line">	app:title=&quot;Toolbar&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>不然会显示ImageView内容,去掉看看<br><img src="CollapsingToolbarLayout/ctl2.gif" alt=""></p>
+<p>不然会显示ImageView内容,去掉看看<br><img src="/2017/11/08/CollapsingToolbarLayout/ctl2.gif" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>CollapsingToolbarLayout是Toolbar的扩充,提供折叠功能.使用时,用它包含Toolbar和其他内容(如ImageView)达到炫酷的效果.</p>
 
       
@@ -1187,11 +1187,12 @@
 const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
 (function(){
   if((typeof(device) != 'undefined') && (device.mobile())){
-    document.getElementById("live2dcanvas").style.width = '75px';
-    document.getElementById("live2dcanvas").style.height = '150px';
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
   }else
     if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/wanko.model.json", 0.5);});
 })();
 </script>
 
