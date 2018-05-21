@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Dagger2 - 进阶]]></title>
     <url>%2F2018%2F05%2F18%2FDagger2%20-%20%E8%BF%9B%E9%98%B6%2F</url>
-    <content type="text"><![CDATA[Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。 Qualifier（限定符）]]></content>
+    <content type="text"><![CDATA[1020.Dagger2 - 基础 讲解了Inject，Component，Module，Provides是如何构成Dagger2整个依赖注入框架。本章讲解Qualifier（限定符），Singleton（单例），Scope（作用域），SubComponent，对Dagger2进行细节上的完善。 Qualifier（限定符）]]></content>
       <tags>
         <tag>Dagger2</tag>
       </tags>
